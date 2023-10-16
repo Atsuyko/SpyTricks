@@ -1,0 +1,16 @@
+{
+    "name": "julie/spy-tricks",
+    "authors": [
+        {
+            "name": "Atsuyko",
+            "email": "julien.jouvedeguibert@hotmail.fr"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Router\\": "routes/",
+            "App\\": "app/"
+        }
+    },
+    "require": {}
+}
