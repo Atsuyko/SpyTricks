@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Database\DBConnection;
 
-class Controller
+abstract class Controller
 {
 
   protected $db;
@@ -14,7 +14,7 @@ class Controller
     $this->db = $db;
   }
 
-  public function view(string $path, array $params = null)
+  protected function view(string $path, array $params = null)
   {
     ob_start();
     $path = str_replace('.', DIRECTORY_SEPARATOR, $path);
@@ -22,5 +22,10 @@ class Controller
 
     $content = ob_get_clean();
     require VIEWS . 'layout.php';
+  }
+
+  protected function getDB()
+  {
+    return $this->db;
   }
 }
