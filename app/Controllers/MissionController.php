@@ -7,17 +7,19 @@ class MissionController extends Controller
 
   public function index()
   {
-    return $this->view('mission.index');
+    $stmt = $this->db->getPDO()->query('SELECT * FROM mission');
+    $missions = $stmt->fetchAll();
+
+
+    return $this->view('mission.index', compact('missions'));
   }
 
   public function show(string $code)
   {
-    $req = $this->db->getPDO()->query('SELECT * from mission');
-    $missions = $req->fetchAll();
+    $stmt = $this->db->getPDO()->prepare('SELECT * FROM mission WHERE code = ?');
+    $stmt->execute([$code]);
+    $mission = $stmt->fetch();
 
-    foreach ($missions as $mission) {
-      echo $mission->title;
-    }
-    return $this->view('mission.show', compact('code'));
+    return $this->view('mission.show', compact('mission'));
   }
 }

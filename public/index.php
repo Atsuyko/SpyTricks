@@ -9,7 +9,9 @@ define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEP
 
 $router = new Router($_GET['url']);
 
-$router->get('/', 'App\Controllers\MissionController@index');
+$router->get('/', 'App\Controllers\HomeController@index');
+
+$router->get('/mission', 'App\Controllers\MissionController@index');
 $router->get('/mission/:code', 'App\Controllers\MissionController@show');
 
 $router->run();

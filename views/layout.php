@@ -9,6 +9,50 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/spytricks">SpyTricks</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/spytricks">Accueil
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/spytricks/mission">Missions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Agents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Planques</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contacts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Cibles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Spécialités</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Pays</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Admins</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+          <input class="form-control me-sm-2" type="search" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
   <div class="container mt-3">
     <?= $content ?>
   </div>
