@@ -25,25 +25,25 @@
             <a class="nav-link" href="/spytricks/mission">Missions</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Agents</a>
+            <a class="nav-link" href="/spytricks/agent">Agents</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Planques</a>
+            <a class="nav-link" href="/spytricks/hideout">Planques</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contacts</a>
+            <a class="nav-link" href="/spytricks/contact">Contacts</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cibles</a>
+            <a class="nav-link" href="/spytricks/target">Cibles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Spécialités</a>
+            <a class="nav-link" href="/spytricks/speciality">Spécialités</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Pays</a>
+            <a class="nav-link" href="/spytricks/country">Pays</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Admins</a>
+            <a class="nav-link" href="/spytricks/admin">Admins</a>
           </li>
         </ul>
         <form class="d-flex">

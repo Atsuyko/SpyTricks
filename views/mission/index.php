@@ -4,7 +4,7 @@
     <div class="card-body">
       <h2 class="card-title"><?= $mission->getCode() ?></h2>
       <h5 class="card-subtitle text-body-secondary mb-2"><?= $mission->title ?></h5>
-      <small><?= $mission->id_country ?></small><br>
+      <small><?= $mission->getCountry()[0]->nation ?></small><br>
       <small><?= $mission->type ?></small>
       <p class="card-text mt-2"><?= $mission->description ?></p>
       <a href="mission/<?= $mission->getCode() ?>" class="btn btn-outline-secondary mx-3">Consulter</a>
@@ -13,4 +13,3 @@
     </div>
   </div>
 <?php endforeach ?>
-</tbody>
