@@ -1,4 +1,4 @@
-<h1>Mission <?= $params['mission']->code ?></h1>
+<h1>Mission <?= $params['mission']->getCode() ?></h1>
 <div class="card mt-3">
   <div class="card-body">
     <h2 class="card-title mb-3"><?= $params['mission']->title ?></h2>
@@ -21,7 +21,11 @@
 
     <p class="card-text mt-2">
     <h6>Agents : </h6>
-    <?= $params['mission']->status ?>
+    <ul>
+      <?php foreach ($params['mission']->getAgent() as $agent) : ?>
+        <li><?= $agent->lastname ?></li>
+      <?php endforeach ?>
+    </ul>
     </p>
 
     <p class="card-text mt-2">
@@ -31,12 +35,12 @@
 
     <p class="card-text mt-2">
     <h6>Début de mission : </h6>
-    <?= $params['mission']->start ?>
+    <?= $params['mission']->getStart() ?>
     </p>
 
     <p class="card-text mt-2">
     <h6>Fin de mission : </h6>
-    <?= $params['mission']->end ?>
+    <?= $params['mission']->getEnd() ?>
     </p>
 
     <a href="../mission" class="btn btn-outline-dark">Retour à la liste des missions</a>
