@@ -7,6 +7,7 @@ use App\Models\Agent;
 class AgentController extends Controller
 {
 
+  // READ 
   public function index()
   {
     $agent = new Agent($this->getDB());

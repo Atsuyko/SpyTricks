@@ -21,6 +21,7 @@ class DBConnection
     $this->password = $password;
   }
 
+  // Creates the DB connection with PDO
   public function getPDO(): PDO
   {
     return $this->pdo ?? $this->pdo = new PDO(

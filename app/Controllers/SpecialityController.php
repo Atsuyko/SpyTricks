@@ -7,6 +7,7 @@ use App\Models\Speciality;
 class SpecialityController extends Controller
 {
 
+  // READ
   public function index()
   {
     $speciality = new Speciality($this->getDB());

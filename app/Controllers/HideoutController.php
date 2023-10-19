@@ -7,6 +7,7 @@ use App\Models\Hideout;
 class HideoutController extends Controller
 {
 
+  // READ 
   public function index()
   {
     $hideout = new Hideout($this->getDB());

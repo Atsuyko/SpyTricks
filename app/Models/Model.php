@@ -31,6 +31,7 @@ abstract class Model
     return $this->query("SELECT * FROM {$this->table} WHERE id = ?", $id, true);
   }
 
+  // Creates a simple or prepared SQL request
   public function query(string $sql, $param = null, bool $single = null)
   {
     $method = is_null($param) ? 'query' : 'prepare';

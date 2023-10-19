@@ -7,6 +7,7 @@ use App\Models\Target;
 class TargetController extends Controller
 {
 
+  // READ
   public function index()
   {
     $target = new Target($this->getDB());

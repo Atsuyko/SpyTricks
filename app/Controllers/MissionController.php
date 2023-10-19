@@ -7,6 +7,7 @@ use App\Models\Mission;
 class MissionController extends Controller
 {
 
+  // READ 
   public function index()
   {
     $mission = new Mission($this->getDB());
@@ -15,6 +16,7 @@ class MissionController extends Controller
     return $this->view('mission.index', compact('missions'));
   }
 
+  // READ - Retrieve a Mission instance
   public function show(string $code)
   {
     $mission = new Mission($this->getDB());

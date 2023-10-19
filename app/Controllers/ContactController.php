@@ -7,6 +7,7 @@ use App\Models\Contact;
 class ContactController extends Controller
 {
 
+  // READ 
   public function index()
   {
     $contact = new Contact($this->getDB());

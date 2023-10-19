@@ -4,10 +4,10 @@ use Router\Router;
 
 require '../vendor/autoload.php';
 
-// Création variable globale pour appeler les vues
+// Creating global variable to call views
 define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
 
-// Création variable globale pour connexion BDD
+// Global variable creation for BDD connection
 define('DB_NAME', 'spytricks');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');

@@ -7,6 +7,7 @@ use App\Models\Admin;
 class AdminController extends Controller
 {
 
+  // READ 
   public function index()
   {
     $admin = new Admin($this->getDB());

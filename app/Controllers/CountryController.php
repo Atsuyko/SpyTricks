@@ -7,6 +7,7 @@ use App\Models\Country;
 class CountryController extends Controller
 {
 
+  // READ 
   public function index()
   {
     $country = new Country($this->getDB());

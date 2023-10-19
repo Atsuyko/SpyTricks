@@ -14,6 +14,7 @@ abstract class Controller
     $this->db = $db;
   }
 
+  // Retrieves the view and integrates the layout
   protected function view(string $path, array $params = null)
   {
     ob_start();
