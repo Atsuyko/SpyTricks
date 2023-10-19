@@ -6,9 +6,28 @@ class Hideout extends Model
 {
 
   protected $table = 'hideout';
-  private $id_country;
+  private string $code;
+  private string $address;
+  private string $type;
+  private int $id_country;
 
-  public function getCountry()
+  public function getCode(): string
+  {
+    return $this->code;
+  }
+
+  public function getAddress(): string
+  {
+    return $this->address;
+  }
+
+  public function getType(): string
+  {
+    return $this->type;
+  }
+
+
+  public function getIdCountry()
   {
     return $this->query(
       "

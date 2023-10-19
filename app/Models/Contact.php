@@ -8,15 +8,33 @@ class Contact extends Model
 {
 
   protected $table = 'contact';
+  private string $code;
+  private string $lastname;
+  private string $firstname;
   private $dob;
   private $id_country;
+
+  public function getCode(): string
+  {
+    return $this->code;
+  }
+
+  public function getLastname(): string
+  {
+    return $this->lastname;
+  }
+
+  public function getFirstname(): string
+  {
+    return $this->firstname;
+  }
 
   public function getDob(): string
   {
     return (new DateTime($this->dob))->format('d/m/Y');
   }
 
-  public function getCountry()
+  public function getIdCountry()
   {
     return $this->query(
       "

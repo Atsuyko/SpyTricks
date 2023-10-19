@@ -1,13 +1,13 @@
 <h1>Mission <?= $params['mission']->getCode() ?></h1>
 <div class="card mt-3 mb-3">
   <div class="card-body">
-    <h2 class="card-title mb-3"><?= $params['mission']->title ?></h2>
+    <h2 class="card-title mb-3"><?= $params['mission']->getTitle() ?></h2>
 
     <h4><?= $params['mission']->getCountry()[0]->nation ?></h4>
-    <h4><?= $params['mission']->type ?></h4>
+    <h4><?= $params['mission']->getType() ?></h4>
 
     <h5 class="mt-3">Briefing :</h5>
-    <p class="card-text mt-2"><?= $params['mission']->description ?></p>
+    <p class="card-text mt-2"><?= $params['mission']->getDescription() ?></p>
 
     <p class="card-text mt-2">
     <h6>Contact : </h6>
@@ -47,7 +47,7 @@
 
     <p class="card-text mt-2">
     <h6>Statut : </h6>
-    <?= $params['mission']->status ?>
+    <?= $params['mission']->getStatus() ?>
     </p>
 
     <p class="card-text mt-2">

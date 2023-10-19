@@ -2,10 +2,10 @@
 <?php foreach ($params['agents'] as $agent) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">
-      <h2 class="card-title"><?= $agent->lastname . ' ' . $agent->firstname ?></h2>
+      <h2 class="card-title"><?= $agent->getLastname() . ' ' . $agent->getFirstname() ?></h2>
       <h5 class="card-subtitle text-body-secondary mb-2">ID : <?= $agent->getId() ?></h5>
       <p class="card-text mt-2">Date de naissance : <?= $agent->getDob() ?></p>
-      <p class="card-text mt-2">Nationalité : <?= $agent->getCountry()[0]->nationality ?></p>
+      <p class="card-text mt-2">Nationalité : <?= $agent->getIdCountry()[0]->nationality ?></p>
       <p class="card-text mt-2">Spécialité :
       <ul>
         <?php foreach ($agent->getSpe() as $spe) : ?>

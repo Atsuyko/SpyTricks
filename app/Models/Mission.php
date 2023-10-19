@@ -8,14 +8,44 @@ class Mission extends Model
 {
 
   protected $table = 'mission';
+  private string $code;
+  private string $title;
+  private string $description;
+  private int $id_country;
+  private string $type;
+  private string $status;
+  private int $id_spe;
   private $start;
   private $end;
-  private $code;
-  private $id_country;
 
   public function getCode(): string
   {
     return $this->code;
+  }
+
+  public function getTitle(): string
+  {
+    return $this->title;
+  }
+
+  public function getDescription(): string
+  {
+    return $this->description;
+  }
+
+  public function getType(): string
+  {
+    return $this->type;
+  }
+
+  public function getStatus(): string
+  {
+    return $this->status;
+  }
+
+  public function getIdSpe(): int
+  {
+    return $this->id_spe;
   }
 
   public function getStart(): string
