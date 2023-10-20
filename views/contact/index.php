@@ -5,9 +5,11 @@
       <h2 class="card-title"><?= $contact->getLastname() . ' ' . $contact->getFirstname() ?></h2>
       <h5 class="card-subtitle text-body-secondary mb-2">Nom de code : <?= $contact->getCode() ?></h5>
       <p class="card-text mt-2">Date de naissance : <?= $contact->getDob() ?></p>
-      <p class="card-text mt-2">Nationalité : <?= $contact->getIdCountry()[0]->nationality ?></p>
-      <a href="#" class="btn btn-outline-dark mx-3">Modifier</a>
-      <a href="#" class="btn btn-outline-danger mx-3">Supprimer</a>
+      <p class="card-text mt-2">Nationalité : <?= $contact->getCountry()[0]->nationality ?></p>
+      <a href="contact/edit/<?= $contact->getCode() ?>" class="btn btn-outline-dark mx-3">Modifier</a>
+      <form action="contact/delete/<?= $contact->getCode() ?>" method="POST" class="d-inline">
+        <button type="submit" class="btn btn-outline-danger mx-3">Supprimer</button>
+      </form>
     </div>
   </div>
 <?php endforeach ?>

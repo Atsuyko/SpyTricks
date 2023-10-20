@@ -1,12 +1,12 @@
 <h1>Mission <?= $params['mission']->getCode() ?></h1>
 <div class="card mt-3 mb-3">
   <div class="card-body">
-    <h2 class="card-title mb-3"><?= $params['mission']->getTitle() ?></h2>
+    <h2 class="card-title mb-3 d-flex justify-content-center"><?= $params['mission']->getTitle() ?></h2>
 
-    <h4><?= $params['mission']->getCountry()[0]->nation ?></h4>
-    <h4><?= $params['mission']->getType() ?></h4>
+    <h4 class="d-flex justify-content-center"><?= $params['mission']->getCountry()[0]->nation ?></h4>
+    <h4 class="d-flex justify-content-center"><?= $params['mission']->getType() ?></h4>
 
-    <h5 class="mt-3">Briefing :</h5>
+    <h5 class="mt-3 d-flex justify-content-center">Briefing de mission :</h5>
     <p class="card-text mt-2"><?= $params['mission']->getDescription() ?></p>
 
     <p class="card-text mt-2">
@@ -60,6 +60,6 @@
     <?= $params['mission']->getEnd() ?>
     </p>
 
-    <a href="../mission" class="btn btn-outline-dark">Retour à la liste des missions</a>
+    <a href="../mission" class="btn btn-outline-dark d-flex justify-content-center">Retour à la liste des missions</a>
   </div>
 </div>

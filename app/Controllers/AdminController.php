@@ -15,4 +15,34 @@ class AdminController extends Controller
 
     return $this->view('admin.index', compact('admins'));
   }
+
+  //UPDATE
+  public function edit(int $id)
+  {
+    $admin = new Admin($this->getDB());
+    $admin = $admin->findById($id);
+
+    return $this->view('admin.edit', compact('admin'));
+  }
+
+  public function update(int $id)
+  {
+    $admin = new Admin($this->getDB());
+    $result = $admin->updateById($id, $_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/admin');
+    }
+  }
+
+  // DELETE
+  public function delete(int $id)
+  {
+    $admin = new Admin($this->getDB());
+    $result = $admin->deleteById($id);
+
+    if ($result) {
+      return header('Location: /spytricks/admin');
+    }
+  }
 }

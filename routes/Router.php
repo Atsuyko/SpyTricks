@@ -18,6 +18,11 @@ class Router
     $this->routes['GET'][] = new Route($path, $action);
   }
 
+  public function post(string $path, string $action)
+  {
+    $this->routes['POST'][] = new Route($path, $action);
+  }
+
   public function run()
   {
     foreach ($this->routes[$_SERVER['REQUEST_METHOD']] as $route) {
@@ -26,6 +31,6 @@ class Router
       }
     }
 
-    return header('HTTP/1.0 404 Not Found');
+    throw new \Exception("Page introuvable...");
   }
 }

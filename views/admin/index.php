@@ -5,8 +5,10 @@
       <h2 class="card-title"><?= $admin->getLastname() . ' ' . $admin->getFirstname() ?></h2>
       <h5 class="card-subtitle text-body-secondary mb-2">ID : <?= $admin->getId() ?></h5>
       <p class="card-text mt-2"><?= $admin->getEmail() ?></p>
-      <a href="#" class="btn btn-outline-dark mx-3">Modifier</a>
-      <a href="#" class="btn btn-outline-danger mx-3">Supprimer</a>
+      <a href="admin/edit/<?= $admin->getId() ?>" class="btn btn-outline-dark mx-3">Modifier</a>
+      <form action="admin/delete/<?= $admin->getId() ?>" method="POST" class="d-inline">
+        <button type="submit" class="btn btn-outline-danger mx-3">Supprimer</button>
+      </form>
     </div>
   </div>
 <?php endforeach ?>

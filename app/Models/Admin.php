@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use DateTime;
+
 class Admin extends Model
 {
 
@@ -10,6 +12,7 @@ class Admin extends Model
   private string $lastname;
   private string $firstname;
   private string $email;
+  private string $doc;
 
   public function getId(): int
   {
@@ -29,5 +32,10 @@ class Admin extends Model
   public function getEmail(): string
   {
     return $this->email;
+  }
+
+  public function getDoc(): string
+  {
+    return (new DateTime($this->doc))->format('d/m/Y');
   }
 }

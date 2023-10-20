@@ -11,8 +11,8 @@ class Contact extends Model
   private string $code;
   private string $lastname;
   private string $firstname;
-  private $dob;
-  private $id_country;
+  private string $dob;
+  private int $id_country;
 
   public function getCode(): string
   {
@@ -34,14 +34,19 @@ class Contact extends Model
     return (new DateTime($this->dob))->format('d/m/Y');
   }
 
-  public function getIdCountry()
+  public function getIdCountry(): int
+  {
+    return $this->id_country;
+  }
+
+  public function getCountry()
   {
     return $this->query(
       "
       SELECT * FROM country AS c
       INNER JOIN contact AS co ON co.id_country = c.id
       WHERE c.id = ?",
-      $this->id_country
+      [$this->id_country]
     );
   }
 }

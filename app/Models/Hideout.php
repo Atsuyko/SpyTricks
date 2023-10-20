@@ -26,15 +26,19 @@ class Hideout extends Model
     return $this->type;
   }
 
+  public function getIdCountry(): int
+  {
+    return $this->id_country;
+  }
 
-  public function getIdCountry()
+  public function getCountry()
   {
     return $this->query(
       "
       SELECT * FROM country AS c
       INNER JOIN hideout AS h ON h.id_country = c.id
       WHERE c.id = ?",
-      $this->id_country
+      [$this->id_country]
     );
   }
 }

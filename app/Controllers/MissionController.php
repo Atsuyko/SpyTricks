@@ -24,4 +24,15 @@ class MissionController extends Controller
 
     return $this->view('mission.show', compact('mission'));
   }
+
+  // DELETE
+  public function delete(string $code)
+  {
+    $mission = new Mission($this->getDB());
+    $result = $mission->deleteByCode($code);
+
+    if ($result) {
+      return header('Location: /spytricks/mission');
+    }
+  }
 }
