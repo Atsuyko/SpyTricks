@@ -57,7 +57,7 @@
     <?= $content ?>
   </div>
   <footer>
-    <div class="container d-flex justify-content-center">
+    <div class="container d-flex justify-content-center mt-5">
       <p>Developped By Atsuyko.</p>
     </div>
   </footer>

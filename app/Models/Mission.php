@@ -15,8 +15,8 @@ class Mission extends Model
   private string $type;
   private string $status;
   private int $id_spe;
-  private $start;
-  private $end;
+  private string $start;
+  private string $end;
 
   public function getCode(): string
   {
@@ -55,10 +55,20 @@ class Mission extends Model
 
   public function getStart(): string
   {
-    return (new DateTime($this->start))->format('d/m/Y');
+    return $this->start;
   }
 
   public function getEnd(): string
+  {
+    return $this->end;
+  }
+
+  public function getStartFormat(): string
+  {
+    return (new DateTime($this->start))->format('d/m/Y');
+  }
+
+  public function getEndFormat(): string
   {
     return (new DateTime($this->end))->format('d/m/Y');
   }
@@ -115,6 +125,17 @@ class Mission extends Model
       INNER JOIN mission AS m ON m.id_country = c.id
       WHERE c.id = ?",
       [$this->id_country]
+    );
+  }
+
+  public function getSpe()
+  {
+    return $this->query(
+      "
+      SELECT * FROM speciality AS s
+      INNER JOIN mission AS m ON m.id_spe = s.id
+      WHERE s.id = ?",
+      [$this->id_spe]
     );
   }
 }

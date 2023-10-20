@@ -2,7 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Models\Agent;
+use App\Models\Target;
+use App\Models\Contact;
+use App\Models\Country;
+use App\Models\Hideout;
 use App\Models\Mission;
+use App\Models\Speciality;
 
 class MissionController extends Controller
 {
@@ -23,6 +29,36 @@ class MissionController extends Controller
     $mission = $mission->findByCode($code);
 
     return $this->view('mission.show', compact('mission'));
+  }
+  //UPDATE
+  public function edit(string $code)
+  {
+    $mission = new Mission($this->getDB());
+    $mission = $mission->findByCode($code);
+    $country = new Country($this->getDB());
+    $countries = $country->all();
+    $speciality = new Speciality($this->getDB());
+    $specialities = $speciality->all();
+    $agent = new Agent($this->getDB());
+    $agents = $agent->all();
+    $target = new Target($this->getDB());
+    $targets = $target->all();
+    $contact = new Contact($this->getDB());
+    $contacts = $contact->all();
+    $hideout = new Hideout($this->getDB());
+    $hideouts = $hideout->all();
+
+    return $this->view('mission.edit', compact('mission', 'countries', 'specialities', 'agents', 'targets', 'contacts', 'hideouts'));
+  }
+
+  public function update(string $code)
+  {
+    $mission = new Mission($this->getDB());
+    $result = $mission->updateByCode($code, $_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/mission');
+    }
   }
 
   // DELETE

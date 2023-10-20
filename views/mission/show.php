@@ -40,7 +40,7 @@
     <h6>Agents : </h6>
     <ul>
       <?php foreach ($params['mission']->getAgent() as $agent) : ?>
-        <li><?= $agent->lastname ?></li>
+        <li><?= $agent->lastname ?> <?= $agent->firstname ?></li>
       <?php endforeach ?>
     </ul>
     </p>
@@ -52,12 +52,12 @@
 
     <p class="card-text mt-2">
     <h6>Début de mission : </h6>
-    <?= $params['mission']->getStart() ?>
+    <?= $params['mission']->getStartFormat() ?>
     </p>
 
     <p class="card-text mt-2">
     <h6>Fin de mission : </h6>
-    <?= $params['mission']->getEnd() ?>
+    <?= $params['mission']->getEndFormat() ?>
     </p>
 
     <a href="../mission" class="btn btn-outline-dark d-flex justify-content-center">Retour à la liste des missions</a>

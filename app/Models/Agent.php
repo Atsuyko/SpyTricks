@@ -62,7 +62,7 @@ class Agent extends Model
     );
   }
 
-  public function update(int $id, array $data, ?array $relations = null)
+  public function updateSpe(int $id, array $data, ?array $relations = null)
   {
     parent::updateById($id, $data);
 
