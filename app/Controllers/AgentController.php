@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Agent;
 use App\Models\Country;
+use App\Models\Speciality;
 
 class AgentController extends Controller
 {
@@ -24,14 +25,21 @@ class AgentController extends Controller
     $agent = $agent->findById($id);
     $country = new Country($this->getDB());
     $countries = $country->all();
+    $speciality = new Speciality($this->getDB());
+    $specialities = $speciality->all();
 
-    return $this->view('agent.edit', compact('agent', 'countries'));
+    return $this->view('agent.edit', compact('agent', 'countries', 'specialities'));
   }
 
   public function update(int $id)
   {
     $agent = new Agent($this->getDB());
-    $result = $agent->updateById($id, $_POST);
+ 
+    $specialities = array_chunk($_POST, 4);
+    $specialities = array_pop($specialities);
+    array_splice($_POST, 4);
+
+    $result = $agent->update($id, $_POST, $specialities);
 
     if ($result) {
       return header('Location: /spytricks/agent');

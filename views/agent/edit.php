@@ -22,5 +22,20 @@
       <?php endforeach ?>
     </select>
   </div>
-  <button type="submit" class="btn btn-outline-secondary">Valider les modifications</button>
+  <p>Spécialités</p>
+  <?php foreach ($params['specialities'] as $speciality) : ?>
+    <div class="form-check form-switch">
+      <input class="form-check-input" 
+      type="checkbox" 
+      value="<?= $speciality->getId() ?>"
+      id="<?= $speciality->getId() ?>" 
+      name="<?= $speciality->getId() ?>" 
+      <?php foreach ($params['agent']->getSpe() as $spe) {
+        echo ($speciality->getId() === $spe->getId()) ? 'checked' : '';
+      }?>>
+      <label class="form-check-label" for="<?= $speciality->getId() ?>"><?= $speciality->getSpe() ?></label>
+    </div>
+  <?php endforeach ?>
+
+  <button type="submit" class="btn btn-outline-secondary mt-3">Valider les modifications</button>
 </form>
