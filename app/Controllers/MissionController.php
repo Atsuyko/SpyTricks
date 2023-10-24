@@ -116,6 +116,10 @@ class MissionController extends Controller
   public function delete(string $code)
   {
     $mission = new Mission($this->getDB());
+    $mission->deleteHideout($code);
+    $mission->deleteAgent($code);
+    $mission->deleteTarget($code);
+    $mission->deleteContact($code);
     $result = $mission->deleteByCode($code);
 
     if ($result) {

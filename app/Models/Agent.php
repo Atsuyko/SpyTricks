@@ -62,10 +62,8 @@ class Agent extends Model
     );
   }
 
-  public function updateSpe(int $id, array $data, ?array $relations = null)
+  public function updateSpe(int $id, ?array $relations = null)
   {
-    parent::updateById($id, $data);
-
     $stmt = $this->db->getPDO()->prepare("DELETE FROM agent_spe WHERE id_agent = ?");
     $result = $stmt->execute([$id]);
 
@@ -73,6 +71,16 @@ class Agent extends Model
       $stmt = $this->db->getPDO()->prepare("INSERT INTO agent_spe (id_agent, id_spe) VALUES (?, ?)");
       $stmt->execute([$id, $speId]);
     }
+
+    if ($result) {
+      return true;
+    }
+  }
+
+  public function deleteSpe(int $id)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM agent_spe WHERE id_agent = ?");
+    $result = $stmt->execute([$id]);
 
     if ($result) {
       return true;

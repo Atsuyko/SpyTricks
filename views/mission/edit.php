@@ -97,7 +97,11 @@
           name="agents[<?= $agent->getId() ?>]" 
           <?php foreach ($params['mission']->getAgent() as $agt) {
             echo ($agent->getId() === $agt->id) ? 'checked' : '';
+          }?> 
+          <?php foreach ($params['mission']->getTarget() as $tgt) {
+            echo ($agent->getIdCountry() == $tgt->getIdCountry()) ? 'disabled' : '';
           }?>>
+
           <label class="form-check-label" for="<?= $agent->getIdCountry() ?>"><?= $agent->getLastname() ?> <?= $agent->getFirstname() ?></label>
         </div>
       <?php endforeach ?>

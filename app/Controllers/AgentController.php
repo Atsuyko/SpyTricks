@@ -34,13 +34,23 @@ class AgentController extends Controller
   public function update(int $id)
   {
     $agent = new Agent($this->getDB());
-    $specialities = array_pop($_POST);
 
+    if (isset($_POST['specialities'])) {
+      $specialities = array_pop($_POST);
+    }
 
-    $result = $agent->updateSpe($id, $_POST, $specialities);
+    $resultAgent = $agent->updateById($id, $_POST);
 
-    if ($result) {
-      return header('Location: /spytricks/agent');
+    if (isset($specialities)) {
+      $resultSpe = $agent->updateSpe($id, $specialities);
+    } else {
+      $agent->deleteSpe($id);
+    }
+
+    if ($resultAgent) {
+      if ((isset($resultSpe) && $resultSpe) || !isset($resultSpe)) {
+        return header('Location: /spytricks/agent');
+      }
     }
   }
 
@@ -48,6 +58,7 @@ class AgentController extends Controller
   public function delete(int $id)
   {
     $agent = new Agent($this->getDB());
+    $agent->deleteSpe($id);
     $result = $agent->deleteById($id);
 
     if ($result) {
