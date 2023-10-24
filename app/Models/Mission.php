@@ -198,4 +198,44 @@ class Mission extends Model
       return true;
     }
   }
+
+  public function deleteHideout(string $code)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_hideout WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    if ($result) {
+      return true;
+    }
+  }
+
+  public function deleteAgent(string $code)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_agent WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    if ($result) {
+      return true;
+    }
+  }
+
+  public function deleteTarget(string $code)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_target WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    if ($result) {
+      return true;
+    }
+  }
+
+  public function deleteContact(string $code)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_contact WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    if ($result) {
+      return true;
+    }
+  }
 }

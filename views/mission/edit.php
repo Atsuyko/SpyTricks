@@ -71,14 +71,15 @@
       <p><b>Cibles</b></p>
       <?php foreach ($params['targets'] as $target) : ?>
         <div class="form-check form-switch">
-          <input class="form-check-input" 
+          <input class="form-check-input targets" 
           type="checkbox" 
           value="<?= $target->getCode() ?>"
-          id="<?= $target->getCode() ?>" 
+          id="<?= $target->getIdCountry() ?>" 
           name="targets[<?= $target->getCode() ?>]" 
           <?php foreach ($params['mission']->getTarget() as $tgt) {
             echo ($target->getCode() === $tgt->getCode()) ? 'checked' : '';
-          }?>>
+          }?>
+          onchange="selected_target(this.id)">
           <label class="form-check-label" for="<?= $target->getCode() ?>"><?= $target->getCode() ?></label>
         </div>
       <?php endforeach ?>
@@ -89,15 +90,15 @@
       <p><b>Agents</b></p>
       <?php foreach ($params['agents'] as $agent) : ?>
         <div class="form-check form-switch">
-          <input class="form-check-input" 
+          <input class="form-check-input agents" 
           type="checkbox" 
           value="<?= $agent->getId() ?>"
-          id="<?= $agent->getId() ?>" 
+          id="<?= $agent->getIdCountry() ?>" 
           name="agents[<?= $agent->getId() ?>]" 
           <?php foreach ($params['mission']->getAgent() as $agt) {
             echo ($agent->getId() === $agt->id) ? 'checked' : '';
           }?>>
-          <label class="form-check-label" for="<?= $agent->getId() ?>"><?= $agent->getLastname() ?> <?= $agent->getFirstname() ?></label>
+          <label class="form-check-label" for="<?= $agent->getIdCountry() ?>"><?= $agent->getLastname() ?> <?= $agent->getFirstname() ?></label>
         </div>
       <?php endforeach ?>
     </div>
