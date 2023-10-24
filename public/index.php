@@ -6,6 +6,7 @@ require '../vendor/autoload.php';
 
 // Creating global variable to call views
 define('VIEWS', dirname(__DIR__) . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR);
+define('SCRIPT', dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
 
 // Global variable creation for BDD connection
 define('DB_NAME', 'spytricks');

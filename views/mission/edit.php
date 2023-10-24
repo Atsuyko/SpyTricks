@@ -14,10 +14,10 @@
   </div>
   <div class="form-group mb-3">
     <label for="countries"><b>Pays</b></label>
-    <select class="form-control" id="countries" name="id_country">
+    <select class="form-control" id="countries" name="id_country" onchange="selected_country(this.value);">
       <option selected value="<?= $params['mission']->getIdCountry() ?>"><?= $params['mission']->getCountry()[0]->nation ?></option>
       <?php foreach ($params['countries'] as $country) : ?>
-        <option value="<?= $country->getId() ?>"><?= $country->getNation() ?></option>
+        <option value="<?= $country->getId() ?>" ><?= $country->getNation() ?></option>
       <?php endforeach ?>
     </select>
   </div>
@@ -53,15 +53,17 @@
       <p><b>Contact</b></p>
       <?php foreach ($params['contacts'] as $contact) : ?>
         <div class="form-check form-switch">
-          <input class="form-check-input" 
+          <input class="form-check-input contacts" 
           type="checkbox" 
           value="<?= $contact->getCode() ?>"
-          id="<?= $contact->getCode() ?>" 
-          name="<?= $contact->getCode() ?>" 
+          id="<?= $contact->getIdCountry() ?>" 
+          name="contacts[<?= $contact->getCode() ?>]" 
           <?php foreach ($params['mission']->getContact() as $ctt) {
             echo ($contact->getCode() === $ctt->getCode()) ? 'checked' : '';
-          }?>>
-          <label class="form-check-label" for="<?= $contact->getCode() ?>"><?= $contact->getCode() ?></label>
+          }?> 
+          <?php echo ($contact->getIdCountry() === $params['mission']->getIdCountry()) ? '' : 'disabled';
+          ?>>
+          <label class="form-check-label" for="<?= $contact->getIdCountry() ?>"><?= $contact->getCode() ?></label>
         </div>
       <?php endforeach ?>
     </div>
@@ -73,7 +75,7 @@
           type="checkbox" 
           value="<?= $target->getCode() ?>"
           id="<?= $target->getCode() ?>" 
-          name="<?= $target->getCode() ?>" 
+          name="targets[<?= $target->getCode() ?>]" 
           <?php foreach ($params['mission']->getTarget() as $tgt) {
             echo ($target->getCode() === $tgt->getCode()) ? 'checked' : '';
           }?>>
@@ -91,7 +93,7 @@
           type="checkbox" 
           value="<?= $agent->getId() ?>"
           id="<?= $agent->getId() ?>" 
-          name="<?= $agent->getId() ?>" 
+          name="agents[<?= $agent->getId() ?>]" 
           <?php foreach ($params['mission']->getAgent() as $agt) {
             echo ($agent->getId() === $agt->id) ? 'checked' : '';
           }?>>
@@ -103,15 +105,17 @@
       <p><b>Planques</b></p>
       <?php foreach ($params['hideouts'] as $hideout) : ?>
         <div class="form-check form-switch">
-          <input class="form-check-input" 
+          <input class="form-check-input hideouts" 
           type="checkbox" 
           value="<?= $hideout->getCode() ?>"
-          id="<?= $hideout->getCode() ?>" 
-          name="<?= $hideout->getCode() ?>" 
+          id="<?= $hideout->getIdCountry() ?>" 
+          name="hideouts[<?= $hideout->getCode() ?>]" 
           <?php foreach ($params['mission']->getHideout() as $hdt) {
             echo ($hideout->getCode() === $hdt->getCode()) ? 'checked' : '';
-          }?>>
-          <label class="form-check-label" for="<?= $hideout->getCode() ?>"><?= $hideout->getCode() ?></label>
+          }?>
+          <?php echo ($hideout->getIdCountry() === $params['mission']->getIdCountry()) ? '' : 'disabled';
+          ?>>
+          <label class="form-check-label" for="<?= $hideout->getIdCountry() ?>"><?= $hideout->getCode() ?></label>
         </div>
       <?php endforeach ?>
     </div>

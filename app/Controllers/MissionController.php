@@ -54,10 +54,27 @@ class MissionController extends Controller
   public function update(string $code)
   {
     $mission = new Mission($this->getDB());
-    $result = $mission->updateByCode($code, $_POST);
+    $hideout = array_pop($_POST);
+    $agent = array_pop($_POST);
+    $target = array_pop($_POST);
+    $contact = array_pop($_POST);
 
-    if ($result) {
-      return header('Location: /spytricks/mission');
+    $resultMission = $mission->updateByCode($code, $_POST);
+    $resultHideout = $mission->updateHideout($code, $hideout);
+    $resultAgent = $mission->updateAgent($code, $agent);
+    $resultTarget = $mission->updateTarget($code, $target);
+    $resultContact = $mission->updateContact($code, $contact);
+
+    if ($resultMission) {
+      if ($resultHideout) {
+        if ($resultAgent) {
+          if ($resultTarget) {
+            if ($resultContact) {
+              return header('Location: /spytricks/mission');
+            }
+          }
+        }
+      }
     }
   }
 

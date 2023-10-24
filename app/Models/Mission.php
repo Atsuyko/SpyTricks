@@ -138,4 +138,64 @@ class Mission extends Model
       [$this->id_spe]
     );
   }
+
+  public function updateHideout(string $code, ?array $relations = null)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_hideout WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    foreach ($relations as $hideoutCode) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_hideout (code_mission, code_hideout) VALUES (?, ?)");
+      $stmt->execute([$code, $hideoutCode]);
+    }
+
+    if ($result) {
+      return true;
+    }
+  }
+
+  public function updateAgent(string $code, ?array $relations = null)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_agent WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    foreach ($relations as $agentId) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_agent (code_mission, id_agent) VALUES (?, ?)");
+      $stmt->execute([$code, $agentId]);
+    }
+
+    if ($result) {
+      return true;
+    }
+  }
+
+  public function updateTarget(string $code, ?array $relations = null)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_target WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    foreach ($relations as $targetCode) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_target (code_mission, code_target) VALUES (?, ?)");
+      $stmt->execute([$code, $targetCode]);
+    }
+
+    if ($result) {
+      return true;
+    }
+  }
+
+  public function updateContact(string $code, ?array $relations = null)
+  {
+    $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_contact WHERE code_mission = ?");
+    $result = $stmt->execute([$code]);
+
+    foreach ($relations as $contactCode) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_contact (code_mission, code_contact) VALUES (?, ?)");
+      $stmt->execute([$code, $contactCode]);
+    }
+
+    if ($result) {
+      return true;
+    }
+  }
 }

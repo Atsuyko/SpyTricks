@@ -29,7 +29,7 @@
       type="checkbox" 
       value="<?= $speciality->getId() ?>"
       id="<?= $speciality->getId() ?>" 
-      name="<?= $speciality->getId() ?>" 
+      name="specialities[<?= $speciality->getId() ?>]" 
       <?php foreach ($params['agent']->getSpe() as $spe) {
         echo ($speciality->getId() === $spe->getId()) ? 'checked' : '';
       }?>>

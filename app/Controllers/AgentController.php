@@ -34,10 +34,8 @@ class AgentController extends Controller
   public function update(int $id)
   {
     $agent = new Agent($this->getDB());
+    $specialities = array_pop($_POST);
 
-    $specialities = array_chunk($_POST, 4);
-    $specialities = array_pop($specialities);
-    array_splice($_POST, 4);
 
     $result = $agent->updateSpe($id, $_POST, $specialities);
 
