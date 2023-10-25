@@ -12,7 +12,9 @@ class Admin extends Model
   private string $lastname;
   private string $firstname;
   private string $email;
+  private string $password;
   private string $doc;
+
 
   public function getId(): int
   {
@@ -34,8 +36,18 @@ class Admin extends Model
     return $this->email;
   }
 
+  public function getPassword(): string
+  {
+    return $this->password;
+  }
+
   public function getDoc(): string
   {
     return (new DateTime($this->doc))->format('d/m/Y');
+  }
+
+  public function getAdmin(string $email): Admin
+  {
+    return $this->query("SELECT * FROM {$this->table} WHERE email = ?", [$email], true);
   }
 }

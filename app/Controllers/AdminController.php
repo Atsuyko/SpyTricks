@@ -7,17 +7,21 @@ use App\Models\Admin;
 class AdminController extends Controller
 {
   //CREATE
-  public function createGet(){
-
+  public function createGet()
+  {
+    $this->isConnected();
   }
 
-  public function createPost(){
-
+  public function createPost()
+  {
+    $this->isConnected();
   }
 
   // READ 
   public function index()
   {
+    $this->isConnected();
+
     $admin = new Admin($this->getDB());
     $admins = $admin->all();
 
@@ -27,6 +31,8 @@ class AdminController extends Controller
   //UPDATE
   public function edit(int $id)
   {
+    $this->isConnected();
+
     $admin = new Admin($this->getDB());
     $admin = $admin->findById($id);
 
@@ -35,6 +41,8 @@ class AdminController extends Controller
 
   public function update(int $id)
   {
+    $this->isConnected();
+
     $admin = new Admin($this->getDB());
     $result = $admin->updateById($id, $_POST);
 
@@ -46,6 +54,8 @@ class AdminController extends Controller
   // DELETE
   public function delete(int $id)
   {
+    $this->isConnected();
+
     $admin = new Admin($this->getDB());
     $result = $admin->deleteById($id);
 

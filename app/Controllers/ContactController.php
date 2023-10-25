@@ -10,6 +10,8 @@ class ContactController extends Controller
   //CREATE
   public function createGet()
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $countries = $country->all();
 
@@ -18,6 +20,8 @@ class ContactController extends Controller
 
   public function createPost()
   {
+    $this->isConnected();
+
     $contact = new Contact($this->getDB());
     $result = $contact->create($_POST);
 
@@ -29,6 +33,8 @@ class ContactController extends Controller
   // READ 
   public function index()
   {
+    $this->isConnected();
+
     $contact = new Contact($this->getDB());
     $contacts = $contact->all();
 
@@ -38,6 +44,8 @@ class ContactController extends Controller
   //UPDATE
   public function edit(string $code)
   {
+    $this->isConnected();
+
     $contact = new Contact($this->getDB());
     $contact = $contact->findByCode($code);
     $country = new Country($this->getDB());
@@ -48,6 +56,8 @@ class ContactController extends Controller
 
   public function update(string $code)
   {
+    $this->isConnected();
+
     $contact = new Contact($this->getDB());
     $result = $contact->updateByCode($code, $_POST);
 
@@ -59,6 +69,8 @@ class ContactController extends Controller
   // DELETE
   public function delete(string $code)
   {
+    $this->isConnected();
+
     $contact = new Contact($this->getDB());
     $result = $contact->deleteByCode($code);
 

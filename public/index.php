@@ -18,8 +18,12 @@ $router = new Router($_GET['url']);
 
 $router->get('/', 'App\Controllers\HomeController@index');
 
+$router->get('/login', 'App\Controllers\LoginController@loginGet');
+$router->post('/login', 'App\Controllers\LoginController@loginPost');
+$router->get('/logout', 'App\Controllers\LoginController@logout');
+
 $router->get('/mission', 'App\Controllers\MissionController@index');
-$router->get('/mission/:code', 'App\Controllers\MissionController@show');
+$router->get('/mission/show/:code', 'App\Controllers\MissionController@show');
 $router->post('/mission/delete/:code', 'App\Controllers\MissionController@delete');
 $router->get('/mission/edit/:code', 'App\Controllers\MissionController@edit');
 $router->post('/mission/edit/:code', 'App\Controllers\MissionController@update');

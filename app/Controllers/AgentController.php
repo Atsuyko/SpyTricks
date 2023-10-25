@@ -11,6 +11,8 @@ class AgentController extends Controller
   //CREATE
   public function createGet()
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $countries = $country->all();
     $speciality = new Speciality($this->getDB());
@@ -21,6 +23,8 @@ class AgentController extends Controller
 
   public function createPost()
   {
+    $this->isConnected();
+
     $agent = new Agent($this->getDB());
 
     if (isset($_POST['specialities'])) {
@@ -43,6 +47,8 @@ class AgentController extends Controller
   // READ 
   public function index()
   {
+    $this->isConnected();
+
     $agent = new Agent($this->getDB());
     $agents = $agent->all();
 
@@ -52,6 +58,8 @@ class AgentController extends Controller
   //UPDATE
   public function edit(int $id)
   {
+    $this->isConnected();
+
     $agent = new Agent($this->getDB());
     $agent = $agent->findById($id);
     $country = new Country($this->getDB());
@@ -64,6 +72,8 @@ class AgentController extends Controller
 
   public function update(int $id)
   {
+    $this->isConnected();
+
     $agent = new Agent($this->getDB());
 
     if (isset($_POST['specialities'])) {
@@ -88,6 +98,8 @@ class AgentController extends Controller
   // DELETE
   public function delete(int $id)
   {
+    $this->isConnected();
+
     $agent = new Agent($this->getDB());
     $agent->deleteSpe($id);
     $result = $agent->deleteById($id);

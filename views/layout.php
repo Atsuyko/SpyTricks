@@ -18,33 +18,47 @@
       <div class="collapse navbar-collapse" id="navbarColor02">
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/spytricks">Accueil
-            </a>
+            <a class="nav-link" href="/spytricks">Accueil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/spytricks/mission">Missions</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/spytricks/agent">Agents</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/spytricks/hideout">Planques</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/spytricks/contact">Contacts</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/spytricks/target">Cibles</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/spytricks/speciality">Spécialités</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/spytricks/country">Pays</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/spytricks/admin">Admins</a>
-          </li>
+          <?php if (isset($_SESSION['auth']) && $_SESSION['auth']) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/agent">Agents</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/hideout">Planques</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/contact">Contacts</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/target">Cibles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/speciality">Spécialités</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/country">Pays</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/admin">Admins</a>
+            </li>
+          <?php endif ?>
+        </ul>
+        <ul class="navbar-nav ms-auto">
+          <?php if (!isset($_SESSION['auth'])) : ?>
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/login">Connexion</a>
+            </li>
+          <?php else : ?>
+
+
+            <li class="nav-item">
+              <a class="nav-link" href="/spytricks/logout">Déconnexion</a>
+            </li>
+          <?php endif ?>
         </ul>
         <form class="d-flex">
           <input class="form-control me-sm-2" type="search" placeholder="Search">
@@ -62,7 +76,7 @@
     </div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-  <script src="<?= SCRIPT . 'assets' . DIRECTORY_SEPARATOR . 'main.js' ?>"></script>
+  <script src="<?= SCRIPT . 'assets' . DIRECTORY_SEPARATOR . 'script_mission.js' ?>"></script>
 </body>
 
 </html>

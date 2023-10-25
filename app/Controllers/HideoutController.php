@@ -10,6 +10,8 @@ class HideoutController extends Controller
   //CREATE
   public function createGet()
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $countries = $country->all();
 
@@ -18,6 +20,8 @@ class HideoutController extends Controller
 
   public function createPost()
   {
+    $this->isConnected();
+
     $hideout = new Hideout($this->getDB());
     $result = $hideout->create($_POST);
 
@@ -29,6 +33,8 @@ class HideoutController extends Controller
   // READ 
   public function index()
   {
+    $this->isConnected();
+
     $hideout = new Hideout($this->getDB());
     $hideouts = $hideout->all();
 
@@ -38,6 +44,8 @@ class HideoutController extends Controller
   //UPDATE
   public function edit(string $code)
   {
+    $this->isConnected();
+
     $hideout = new Hideout($this->getDB());
     $hideout = $hideout->findByCode($code);
     $country = new Country($this->getDB());
@@ -48,6 +56,8 @@ class HideoutController extends Controller
 
   public function update(string $code)
   {
+    $this->isConnected();
+
     $hideout = new Hideout($this->getDB());
 
     $result = $hideout->updateByCode($code, $_POST);
@@ -60,6 +70,8 @@ class HideoutController extends Controller
   // DELETE
   public function delete(string $code)
   {
+    $this->isConnected();
+
     $hideout = new Hideout($this->getDB());
     $result = $hideout->deleteByCode($code);
 

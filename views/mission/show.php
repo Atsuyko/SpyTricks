@@ -60,6 +60,6 @@
     <?= $params['mission']->getEndFormat() ?>
     </p>
 
-    <a href="../mission" class="btn btn-outline-dark d-flex justify-content-center">Retour à la liste des missions</a>
+    <a href="../" class="btn btn-outline-dark d-flex justify-content-center">Retour à la liste des missions</a>
   </div>
 </div>

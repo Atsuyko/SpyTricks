@@ -9,11 +9,15 @@ class SpecialityController extends Controller
   //CREATE
   public function createGet()
   {
+    $this->isConnected();
+
     return $this->view('speciality.create');
   }
 
   public function createPost()
   {
+    $this->isConnected();
+
     $speciality = new Speciality($this->getDB());
     $result = $speciality->create($_POST);
 
@@ -25,6 +29,8 @@ class SpecialityController extends Controller
   // READ
   public function index()
   {
+    $this->isConnected();
+
     $speciality = new Speciality($this->getDB());
     $specialities = $speciality->all();
 
@@ -34,6 +40,8 @@ class SpecialityController extends Controller
   //UPDATE
   public function edit(int $id)
   {
+    $this->isConnected();
+
     $speciality = new Speciality($this->getDB());
     $speciality = $speciality->findById($id);
 
@@ -42,6 +50,8 @@ class SpecialityController extends Controller
 
   public function update(int $id)
   {
+    $this->isConnected();
+
     $speciality = new Speciality($this->getDB());
 
     $result = $speciality->updateById($id, $_POST);
@@ -54,6 +64,8 @@ class SpecialityController extends Controller
   // DELETE
   public function delete(int $id)
   {
+    $this->isConnected();
+
     $speciality = new Speciality($this->getDB());
     $result = $speciality->deleteById($id);
 

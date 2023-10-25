@@ -25,7 +25,7 @@ function selected_country(country) {
 
 function selected_target(target_country) {
   var agents = document.getElementsByClassName('agents');
-  var targets = document.getElementsByClassName('targets');
+  // var targets = document.getElementsByClassName('targets');
 
   for (const agent in agents) {
     if ((agents[agent].id == target_country) && (agents[agent].disabled == false)) {
@@ -37,19 +37,6 @@ function selected_target(target_country) {
 
     } else {
 
-    }
-  }
-
-  for (const target in targets) {
-
-    if ((targets[target].checked == false)) {
-
-      for (const agent in agents) {
-
-        if ((agents[agent].id == targets[target].id) && (agents[agent].disabled == true)) {
-          agents[agent].disabled = false;
-        }
-      }
     }
   }
 }

@@ -20,6 +20,7 @@
   <div class="form-group mb-3">
     <label for="countries">Nationalité</label>
     <select class="form-control" id="countries" name="id_country" required>
+    <option selected value="">Choisir une nationalité</option>
       <?php foreach ($params['countries'] as $country) : ?>
         <option value="<?= $country->getId() ?>"><?= $country->getNationality() ?></option>
       <?php endforeach ?>

@@ -9,11 +9,15 @@ class CountryController extends Controller
   //CREATE
   public function createGet()
   {
+    $this->isConnected();
+
     return $this->view('country.create');
   }
 
   public function createPost()
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $result = $country->create($_POST);
 
@@ -25,6 +29,8 @@ class CountryController extends Controller
   // READ 
   public function index()
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $countries = $country->all();
 
@@ -34,6 +40,8 @@ class CountryController extends Controller
   //UPDATE
   public function edit(int $id)
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $country = $country->findById($id);
 
@@ -42,6 +50,8 @@ class CountryController extends Controller
 
   public function update(int $id)
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
 
     $result = $country->updateById($id, $_POST);
@@ -54,6 +64,8 @@ class CountryController extends Controller
   // DELETE
   public function delete(int $id)
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $result = $country->deleteById($id);
 

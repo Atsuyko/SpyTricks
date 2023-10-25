@@ -139,6 +139,38 @@ class Mission extends Model
     );
   }
 
+  public function createHideout(string $code, ?array $relations = null)
+  {
+    foreach ($relations as $hideoutCode) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_hideout (code_mission, code_hideout) VALUES (?, ?)");
+      $stmt->execute([$code, $hideoutCode]);
+    }
+  }
+
+  public function createAgent(string $code, ?array $relations = null)
+  {
+    foreach ($relations as $agentCode) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_agent (code_mission, id_agent) VALUES (?, ?)");
+      $stmt->execute([$code, $agentCode]);
+    }
+  }
+
+  public function createTarget(string $code, ?array $relations = null)
+  {
+    foreach ($relations as $targetCode) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_target (code_mission, code_target) VALUES (?, ?)");
+      $stmt->execute([$code, $targetCode]);
+    }
+  }
+
+  public function createContact(string $code, ?array $relations = null)
+  {
+    foreach ($relations as $contactCode) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO mission_contact (code_mission, code_contact) VALUES (?, ?)");
+      $stmt->execute([$code, $contactCode]);
+    }
+  }
+
   public function updateHideout(string $code, ?array $relations = null)
   {
     $stmt = $this->db->getPDO()->prepare("DELETE FROM mission_hideout WHERE code_mission = ?");

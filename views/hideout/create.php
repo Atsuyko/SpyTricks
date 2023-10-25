@@ -15,6 +15,7 @@
   <div class="form-group mb-3">
     <label for="countries">Pays</label>
     <select class="form-control" id="countries" name="id_country" required>
+    <option selected value="">Choisir un pays</option>
       <?php foreach ($params['countries'] as $country) : ?>
         <option value="<?= $country->getId() ?>"><?= $country->getNation() ?></option>
       <?php endforeach ?>

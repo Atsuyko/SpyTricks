@@ -10,6 +10,8 @@ class TargetController extends Controller
   //CREATE
   public function createGet()
   {
+    $this->isConnected();
+
     $country = new Country($this->getDB());
     $countries = $country->all();
 
@@ -18,6 +20,8 @@ class TargetController extends Controller
 
   public function createPost()
   {
+    $this->isConnected();
+
     $target = new Target($this->getDB());
     $result = $target->create($_POST);
 
@@ -29,6 +33,8 @@ class TargetController extends Controller
   // READ
   public function index()
   {
+    $this->isConnected();
+
     $target = new Target($this->getDB());
     $targets = $target->all();
 
@@ -38,6 +44,8 @@ class TargetController extends Controller
   //UPDATE
   public function edit(string $code)
   {
+    $this->isConnected();
+
     $target = new Target($this->getDB());
     $target = $target->findByCode($code);
     $country = new Country($this->getDB());
@@ -48,6 +56,8 @@ class TargetController extends Controller
 
   public function update(string $code)
   {
+    $this->isConnected();
+
     $target = new Target($this->getDB());
 
     $result = $target->updateByCode($code, $_POST);
@@ -60,6 +70,8 @@ class TargetController extends Controller
   // DELETE
   public function delete(string $code)
   {
+    $this->isConnected();
+
     $target = new Target($this->getDB());
     $result = $target->deleteByCode($code);
 
