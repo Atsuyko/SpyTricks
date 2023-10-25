@@ -1,4 +1,5 @@
 <h1>Specialités</h1>
+<a href="speciality/create" class="btn btn-outline-dark">Ajouter une spécialité</a>
 <?php foreach ($params['specialities'] as $speciality) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

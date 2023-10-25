@@ -2,7 +2,7 @@
 <form action="<?= $params['speciality']->getId() ?>" method="POST">
   <div class="form-group mb-3">
     <label for="spe">Spécialité</label>
-    <input type="text" class="form-control" name="spe" id="spe" value="<?= $params['speciality']->getSpe() ?>">
+    <input type="text" class="form-control" name="spe" id="spe" value="<?= $params['speciality']->getSpe() ?>" required>
   </div>
   <button type="submit" class="btn btn-outline-secondary">Valider les modifications</button>
 </form>

@@ -62,6 +62,19 @@ class Agent extends Model
     );
   }
 
+  public function createSpe(?array $relations = null)
+  {
+
+    $id = $this->db->getPDO()->lastInsertId();
+
+    foreach ($relations as $speId) {
+      $stmt = $this->db->getPDO()->prepare("INSERT INTO agent_spe (id_agent, id_spe) VALUES (?, ?)");
+      $stmt->execute([$id, $speId]);
+    }
+
+    return true;
+  }
+
   public function updateSpe(int $id, ?array $relations = null)
   {
     $stmt = $this->db->getPDO()->prepare("DELETE FROM agent_spe WHERE id_agent = ?");

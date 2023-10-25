@@ -1,4 +1,5 @@
 <h1>Missions</h1>
+<a href="mission/create" class="btn btn-outline-dark">Créer une mission</a>
 <?php foreach ($params['missions'] as $mission) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

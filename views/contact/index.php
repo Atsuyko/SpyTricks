@@ -1,4 +1,5 @@
 <h1>Contacts</h1>
+<a href="contact/create" class="btn btn-outline-dark">Créer un contact</a>
 <?php foreach ($params['contacts'] as $contact) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

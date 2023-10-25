@@ -1,4 +1,5 @@
 <h1>Agents</h1>
+<a href="agent/create" class="btn btn-outline-dark">Créer un agent</a>
 <?php foreach ($params['agents'] as $agent) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

@@ -92,4 +92,20 @@ abstract class Model
       return $stmt->$fetch();
     }
   }
+
+  public function create(array $data)
+  {
+    $insert = '';
+    $values = '';
+    $i = 1;
+
+    foreach ($data as $key => $value) {
+      $comma = $i === count($data) ? "" : ", ";
+      $insert .= "{$key}{$comma}";
+      $values .= ":{$key}{$comma}";
+      $i++;
+    }
+
+    return $this->query("INSERT INTO {$this->table} ($insert) VALUE ($values)", $data);
+  }
 }

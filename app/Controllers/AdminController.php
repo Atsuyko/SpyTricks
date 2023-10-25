@@ -6,6 +6,14 @@ use App\Models\Admin;
 
 class AdminController extends Controller
 {
+  //CREATE
+  public function createGet(){
+
+  }
+
+  public function createPost(){
+
+  }
 
   // READ 
   public function index()

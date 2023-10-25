@@ -7,6 +7,24 @@ use App\Models\Hideout;
 
 class HideoutController extends Controller
 {
+  //CREATE
+  public function createGet()
+  {
+    $country = new Country($this->getDB());
+    $countries = $country->all();
+
+    return $this->view('hideout.create', compact('countries'));
+  }
+
+  public function createPost()
+  {
+    $hideout = new Hideout($this->getDB());
+    $result = $hideout->create($_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/hideout');
+    }
+  }
 
   // READ 
   public function index()

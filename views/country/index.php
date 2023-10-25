@@ -1,4 +1,5 @@
 <h1>Pays</h1>
+<a href="country/create" class="btn btn-outline-dark">Ajouter un pays</a>
 <?php foreach ($params['countries'] as $country) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

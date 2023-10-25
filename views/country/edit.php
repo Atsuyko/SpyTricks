@@ -2,11 +2,11 @@
 <form action="<?= $params['country']->getId() ?>" method="POST">
   <div class="form-group mb-3">
     <label for="nation">Pays</label>
-    <input type="text" class="form-control" name="nation" id="nation" value="<?= $params['country']->getNation() ?>">
+    <input type="text" class="form-control" name="nation" id="nation" value="<?= $params['country']->getNation() ?>" required>
   </div>
   <div class="form-group mb-3">
     <label for="nationality">Nationalité</label>
-    <input type="text" class="form-control" name="nationality" id="nationality" value="<?= $params['country']->getNationality() ?>">
+    <input type="text" class="form-control" name="nationality" id="nationality" value="<?= $params['country']->getNationality() ?>" required>
   </div>
   <button type="submit" class="btn btn-outline-secondary">Valider les modifications</button>
 </form>

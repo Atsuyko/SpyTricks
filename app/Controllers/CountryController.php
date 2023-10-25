@@ -6,6 +6,21 @@ use App\Models\Country;
 
 class CountryController extends Controller
 {
+  //CREATE
+  public function createGet()
+  {
+    return $this->view('country.create');
+  }
+
+  public function createPost()
+  {
+    $country = new Country($this->getDB());
+    $result = $country->create($_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/country');
+    }
+  }
 
   // READ 
   public function index()

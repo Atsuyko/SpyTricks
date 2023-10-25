@@ -2,19 +2,19 @@
 <form action="<?= $params['mission']->getCode() ?>" method="POST">
   <div class="form-group mb-3">
     <label for="title"><b>Titre</b></label>
-    <input type="text" class="form-control" name="title" id="title" value="<?= $params['mission']->getTitle() ?>">
+    <input type="text" class="form-control" name="title" id="title" value="<?= $params['mission']->getTitle() ?>" required>
   </div>
   <div class="form-group mb-3">
     <label for="type"><b>Type</b></label>
-    <input type="text" class="form-control" name="type" id="type" value="<?= $params['mission']->getType() ?>">
+    <input type="text" class="form-control" name="type" id="type" value="<?= $params['mission']->getType() ?>" required>
   </div>
   <div class="form-group mb-3">
     <label for="description"><b>Description</b></label>
-    <textarea class="form-control" name="description" id="description" rows="5"><?= $params['mission']->getDescription() ?></textarea>
+    <textarea class="form-control" name="description" id="description" rows="5" required><?= $params['mission']->getDescription() ?></textarea>
   </div>
   <div class="form-group mb-3">
     <label for="countries"><b>Pays</b></label>
-    <select class="form-control" id="countries" name="id_country" onchange="selected_country(this.value);">
+    <select class="form-control" id="countries" name="id_country" onchange="selected_country(this.value);" required>
       <option selected value="<?= $params['mission']->getIdCountry() ?>"><?= $params['mission']->getCountry()[0]->nation ?></option>
       <?php foreach ($params['countries'] as $country) : ?>
         <option value="<?= $country->getId() ?>" ><?= $country->getNation() ?></option>
@@ -23,7 +23,7 @@
   </div>
   <div class="form-group mb-3">
     <label for="specialities"><b>Spécialité</b></label>
-    <select class="form-control" id="specialities" name="id_spe">
+    <select class="form-control" id="specialities" name="id_spe" required>
       <option selected value="<?= $params['mission']->getIdSpe() ?>"><?= $params['mission']->getSpe()[0]->spe ?></option>
       <?php foreach ($params['specialities'] as $speciality) : ?>
         <option value="<?= $speciality->getId() ?>"><?= $speciality->getSpe() ?></option>
@@ -32,7 +32,7 @@
   </div>
   <div class="form-group mb-3">
     <label for="status"><b>Statut</b></label>
-    <select class="form-control" id="status" name="status">
+    <select class="form-control" id="status" name="status" required>
       <option selected value="<?= $params['mission']->getStatus() ?>"><?= $params['mission']->getStatus() ?></option>
         <option value="En préparation">En préparation</option>
         <option value="En cours">En cours</option>
@@ -42,11 +42,11 @@
   </div>
   <div class="form-group mb-3">
     <label for="start"><b>Date de début</b></label>
-    <input type="date" class="form-control" name="start" id="start" value="<?= $params['mission']->getStart() ?>">
+    <input type="date" class="form-control" name="start" id="start" value="<?= $params['mission']->getStart() ?>" required>
   </div>
   <div class="form-group mb-3">
     <label for="end">Date de fin</label>
-    <input type="date" class="form-control" name="end" id="end" value="<?= $params['mission']->getEnd() ?>">
+    <input type="date" class="form-control" name="end" id="end" value="<?= $params['mission']->getEnd() ?>" required>
   </div>
   <div class="row">
   <div class="col-6">

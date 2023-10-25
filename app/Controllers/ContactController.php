@@ -7,6 +7,24 @@ use App\Models\Country;
 
 class ContactController extends Controller
 {
+  //CREATE
+  public function createGet()
+  {
+    $country = new Country($this->getDB());
+    $countries = $country->all();
+
+    return $this->view('contact.create', compact('countries'));
+  }
+
+  public function createPost()
+  {
+    $contact = new Contact($this->getDB());
+    $result = $contact->create($_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/contact');
+    }
+  }
 
   // READ 
   public function index()

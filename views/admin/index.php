@@ -1,4 +1,5 @@
 <h1>Administrateurs</h1>
+<a href="admin/create" class="btn btn-outline-dark">Créer un administrateur</a>
 <?php foreach ($params['admins'] as $admin) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

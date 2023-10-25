@@ -2,20 +2,20 @@
 <form action="<?= $params['agent']->getId() ?>" method="POST">
   <div class="form-group mb-3">
     <label for="lastname">Nom</label>
-    <input type="text" class="form-control" name="lastname" id="lastname" value="<?= $params['agent']->getLastname() ?>">
+    <input type="text" class="form-control" name="lastname" id="lastname" value="<?= $params['agent']->getLastname() ?>" required>
   </div>
   <div class="form-group mb-3">
     <label for="firstname">Prénom</label>
-    <input type="text" class="form-control" name="firstname" id="firstname" value="<?= $params['agent']->getFirstname() ?>">
+    <input type="text" class="form-control" name="firstname" id="firstname" value="<?= $params['agent']->getFirstname() ?>" required>
   </div>
 
   <div class="form-group mb-3">
     <label for="dob">Date de naissance</label>
-    <input type="date" class="form-control" name="dob" id="dob" value="<?= date('Y-m-d', strtotime($params['agent']->getDob())) ?>">
+    <input type="date" class="form-control" name="dob" id="dob" value="<?= date('Y-m-d', strtotime($params['agent']->getDob())) ?>" required>
   </div>
   <div class="form-group mb-3">
     <label for="countries">Nationalité</label>
-    <select class="form-control" id="countries" name="id_country">
+    <select class="form-control" id="countries" name="id_country" required>
       <option selected value="<?= $params['agent']->getIdCountry() ?>"><?= $params['agent']->getCountry()[0]->nationality ?></option>
       <?php foreach ($params['countries'] as $country) : ?>
         <option value="<?= $country->getId() ?>"><?= $country->getNationality() ?></option>

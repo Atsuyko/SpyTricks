@@ -8,6 +8,37 @@ use App\Models\Speciality;
 
 class AgentController extends Controller
 {
+  //CREATE
+  public function createGet()
+  {
+    $country = new Country($this->getDB());
+    $countries = $country->all();
+    $speciality = new Speciality($this->getDB());
+    $specialities = $speciality->all();
+
+    return $this->view('agent.create', compact('countries', 'specialities'));
+  }
+
+  public function createPost()
+  {
+    $agent = new Agent($this->getDB());
+
+    if (isset($_POST['specialities'])) {
+      $specialities = array_pop($_POST);
+    }
+
+    $resultAgent = $agent->create($_POST);
+
+    if (isset($specialities)) {
+      $resultSpe = $agent->createSpe($specialities);
+    }
+
+    if ($resultAgent) {
+      if ((isset($resultSpe) && $resultSpe) || !isset($resultSpe)) {
+        return header('Location: /spytricks/agent');
+      }
+    }
+  }
 
   // READ 
   public function index()

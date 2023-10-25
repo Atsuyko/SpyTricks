@@ -1,4 +1,5 @@
 <h1>Planques</h1>
+<a href="hideout/create" class="btn btn-outline-dark">Créer une planque</a>
 <?php foreach ($params['hideouts'] as $hideout) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

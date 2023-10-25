@@ -7,6 +7,24 @@ use App\Models\Country;
 
 class TargetController extends Controller
 {
+  //CREATE
+  public function createGet()
+  {
+    $country = new Country($this->getDB());
+    $countries = $country->all();
+
+    return $this->view('target.create', compact('countries'));
+  }
+
+  public function createPost()
+  {
+    $target = new Target($this->getDB());
+    $result = $target->create($_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/target');
+    }
+  }
 
   // READ
   public function index()

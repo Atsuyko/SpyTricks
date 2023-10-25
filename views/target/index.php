@@ -1,4 +1,5 @@
 <h1>Cibles</h1>
+<a href="target/create" class="btn btn-outline-dark">Créer une cible</a>
 <?php foreach ($params['targets'] as $target) : ?>
   <div class="card mt-3 mb-3">
     <div class="card-body">

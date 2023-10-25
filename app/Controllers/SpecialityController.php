@@ -6,6 +6,21 @@ use App\Models\Speciality;
 
 class SpecialityController extends Controller
 {
+  //CREATE
+  public function createGet()
+  {
+    return $this->view('speciality.create');
+  }
+
+  public function createPost()
+  {
+    $speciality = new Speciality($this->getDB());
+    $result = $speciality->create($_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/speciality');
+    }
+  }
 
   // READ
   public function index()
