@@ -50,9 +50,12 @@ class AgentController extends Controller
     $this->isConnected();
 
     $agent = new Agent($this->getDB());
-    $agents = $agent->all();
+    $agents = $agent->pagination();
 
-    return $this->view('agent.index', compact('agents'));
+    $total = count($agent->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('agent.index', compact('agents', 'total', 'pages'));
   }
 
   //UPDATE

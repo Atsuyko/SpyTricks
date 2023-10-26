@@ -10,11 +10,22 @@ class AdminController extends Controller
   public function createGet()
   {
     $this->isConnected();
+
+    return $this->view('admin.create');
   }
 
   public function createPost()
   {
     $this->isConnected();
+
+    $admin = new Admin($this->getDB());
+    $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $_POST['doc'] = date('Y-m-d');
+    $result = $admin->create($_POST);
+
+    if ($result) {
+      return header('Location: /spytricks/admin');
+    }
   }
 
   // READ 
@@ -23,9 +34,12 @@ class AdminController extends Controller
     $this->isConnected();
 
     $admin = new Admin($this->getDB());
-    $admins = $admin->all();
+    $admins = $admin->pagination();
 
-    return $this->view('admin.index', compact('admins'));
+    $total = count($admin->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('admin.index', compact('admins', 'total', 'pages'));
   }
 
   //UPDATE

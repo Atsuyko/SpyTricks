@@ -14,7 +14,7 @@
   </div>
   <div class="form-group mb-3">
     <label for="doc">Date de création</label>
-    <input type="date" class="form-control" name="doc" id="doc" value="<?= date('Y-m-d', strtotime($params['admin']->getDoc())) ?>" disabled>
+    <input type="text" class="form-control" name="doc" id="doc" value="<?= $params['admin']->getDoc() ?>" disabled>
   </div>
   <button type="submit" class="btn btn-outline-secondary">Valider les modifications</button>
 </form>

@@ -36,9 +36,12 @@ class ContactController extends Controller
     $this->isConnected();
 
     $contact = new Contact($this->getDB());
-    $contacts = $contact->all();
+    $contacts = $contact->pagination();
 
-    return $this->view('contact.index', compact('contacts'));
+    $total = count($contact->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('contact.index', compact('contacts', 'total', 'pages'));
   }
 
   //UPDATE

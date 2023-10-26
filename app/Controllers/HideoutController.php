@@ -36,9 +36,12 @@ class HideoutController extends Controller
     $this->isConnected();
 
     $hideout = new Hideout($this->getDB());
-    $hideouts = $hideout->all();
+    $hideouts = $hideout->pagination();
 
-    return $this->view('hideout.index', compact('hideouts'));
+    $total = count($hideout->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('hideout.index', compact('hideouts', 'total', 'pages'));
   }
 
   //UPDATE

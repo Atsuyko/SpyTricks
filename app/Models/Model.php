@@ -16,6 +16,21 @@ abstract class Model
     $this->db = $db;
   }
 
+  public function pagination(): array
+  {
+    if (isset($_GET['page']) && !empty($_GET['page'])) {
+      $currentPage = (int) strip_tags($_GET['page']);
+    } else {
+      $currentPage = 1;
+    }
+
+    $itemPerPage = 3;
+
+    $firstItem = ($currentPage * $itemPerPage) - $itemPerPage;
+
+    return $this->query("SELECT * FROM {$this->table} LIMIT {$firstItem}, {$itemPerPage}");
+  }
+
   public function all(): array
   {
     return $this->query("SELECT * FROM {$this->table}");

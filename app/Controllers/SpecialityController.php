@@ -32,9 +32,12 @@ class SpecialityController extends Controller
     $this->isConnected();
 
     $speciality = new Speciality($this->getDB());
-    $specialities = $speciality->all();
+    $specialities = $speciality->pagination();
 
-    return $this->view('speciality.index', compact('specialities'));
+    $total = count($speciality->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('speciality.index', compact('specialities', 'total', 'pages'));
   }
 
   //UPDATE

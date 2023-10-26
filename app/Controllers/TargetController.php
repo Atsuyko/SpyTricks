@@ -36,9 +36,12 @@ class TargetController extends Controller
     $this->isConnected();
 
     $target = new Target($this->getDB());
-    $targets = $target->all();
+    $targets = $target->pagination();
 
-    return $this->view('target.index', compact('targets'));
+    $total = count($target->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('target.index', compact('targets', 'total', 'pages'));
   }
 
   //UPDATE

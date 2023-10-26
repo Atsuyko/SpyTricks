@@ -43,8 +43,31 @@ class MissionController extends Controller
       $hideout = array_pop($_POST);
     }
 
+    $agentList = new Agent($this->getDB());
+    $agentsList = $agentList->all();
+
     if (isset($_POST['agents'])) {
       $agent = array_pop($_POST);
+      $speChosen = 0;
+      $missionSpe = $_POST['id_spe'];
+
+      // Verify if one agent or more get the great speciality
+      foreach ($agent as $selected_agt) {
+        foreach ($agentsList as $agt) {
+          if ($selected_agt == $agt->getId()) {
+            $agtSpes = $agt->getSpe();
+
+            foreach ($agtSpes as $agtSpe) {
+              if ($agtSpe->id_spe ==  $missionSpe) {
+                $speChosen++;
+              }
+            }
+          }
+        }
+      }
+      if ($speChosen == 0) {
+        throw new \Exception("Vous devez sélectionner au moins 1 agent avec la spécialité requise !");
+      }
     } else {
       throw new \Exception("Vous devez sélectionner au moins 1 agent !");
     }
@@ -92,9 +115,12 @@ class MissionController extends Controller
   public function index()
   {
     $mission = new Mission($this->getDB());
-    $missions = $mission->all();
+    $missions = $mission->pagination();
 
-    return $this->view('mission.index', compact('missions'));
+    $total = count($mission->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('mission.index', compact('missions', 'total', 'pages'));
   }
 
   // READ - Retrieve a Mission instance

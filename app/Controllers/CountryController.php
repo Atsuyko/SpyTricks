@@ -32,9 +32,12 @@ class CountryController extends Controller
     $this->isConnected();
 
     $country = new Country($this->getDB());
-    $countries = $country->all();
+    $countries = $country->pagination();
 
-    return $this->view('country.index', compact('countries'));
+    $total = count($country->all());
+    $pages = ceil($total / 3);
+
+    return $this->view('country.index', compact('countries', 'total', 'pages'));
   }
 
   //UPDATE
